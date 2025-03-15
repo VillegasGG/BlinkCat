@@ -1,0 +1,57 @@
+body {
+    background-color: #1e1e1e;
+    color: rgb(230, 206, 234);
+    text-align: center;
+    padding: 20px;
+  }
+  
+  button {
+    font-family: "Atma", system-ui;
+    font-weight: 300;
+    font-style: normal;
+    background-color: #c69ec7;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  #content {
+    font-family: "Atma", system-ui;
+    font-weight: 300;
+    font-style: normal;
+    margin-top: 20px;
+  }
+  
+
+  .atma-light {
+    font-family: "Atma", system-ui;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .atma-regular {
+    font-family: "Atma", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .atma-medium {
+    font-family: "Atma", system-ui;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .atma-semibold {
+    font-family: "Atma", system-ui;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .atma-bold {
+    font-family: "Atma", system-ui;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
