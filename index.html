@@ -14,7 +14,6 @@
 
   <div id="menu">
     <button class="atma-regular btn-highlight" id="btnBlink">Parpadeo 👁️</button>
-    <button class="atma-regular btn-highlight" id="btnBreak">Pausa Activa 🌲</button>
     <button class="atma-regular btn-highlight" id="btnPomodoro">Pomodoro 🍅</button>
   </div>
 
@@ -27,7 +26,7 @@
   <script src="js/blinkTimer.js"></script>
 
   <script>
-    const btnBreak = document.getElementById('btnBreak');
+    const btnBreak = document.getElementById('btnPomodoro');
 
     btnBreak.addEventListener('click', () => {
       if (window.electron && typeof window.electron.send === 'function') {
