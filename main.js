@@ -1,17 +1,22 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
+let mainWindow;
 
 function createWindow() {
-  const win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      enableRemoteModule: false,
+      nodeIntegration: false
     }
   });
 
-  win.loadFile('index.html');
+  mainWindow.loadFile('index.html');
+  mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
@@ -22,6 +27,16 @@ app.whenReady().then(() => {
       createWindow();
     }
   });
+});
+
+ipcMain.on('open-window', (event, timerType) => {
+  console.log('Opening window for timer type:', timerType);
+  let newWindow = new BrowserWindow({
+    width: 400,
+    height: 200
+  });
+
+  newWindow.loadFile(`${timerType}.html`);
 });
 
 app.on('window-all-closed', () => {

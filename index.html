@@ -22,8 +22,21 @@
     <p class="atma-bold">Selecciona un temporizador para comenzar 😸</p>
   </div>
 
+  <script src="./main.js"></script>
+
   <script src="js/blinkTimer.js"></script>
-  <script src="js/breakTimer.js"></script>
-  <script src="js/pomodoroTimer.js"></script>
+
+  <script>
+    const btnBreak = document.getElementById('btnBreak');
+
+    btnBreak.addEventListener('click', () => {
+      if (window.electron && typeof window.electron.send === 'function') {
+        window.electron.send('open-window', 'break');
+      } else {
+        console.error('Electron API no está disponible.');
+      }
+    });
+  </script>
+
 </body>
 </html>
