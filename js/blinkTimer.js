@@ -41,10 +41,11 @@ function startBlinkTimer() {
     }, 60000);
 }
 
-dBlink.addEventListener('click', () => {
-  const blinkDiv = document.getElementById('blinkDiv');
-  blinkDiv.remove();
-  
-
-
+panel.addEventListener('click', (event) => {
+  if (event.target && event.target.id === 'dBlink') {
+    const blinkDiv = document.getElementById('blinkDiv');
+    if (blinkDiv) {
+      blinkDiv.remove();
+    }
+  }
 });
