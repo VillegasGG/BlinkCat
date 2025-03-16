@@ -30,7 +30,6 @@ app.whenReady().then(() => {
 });
 
 ipcMain.on('open-window', (event, timerType) => {
-  console.log('Opening window for timer type:', timerType);
   let newWindow = new BrowserWindow({
     width: 400,
     height: 400

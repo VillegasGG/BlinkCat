@@ -1,8 +1,14 @@
 const btnBlink = document.getElementById('btnBlink');
-const content = document.getElementById('content');
+const panel = document.getElementById('ActiveTimers');
+const dBlink = document.getElementById('dBlink');
 
 btnBlink.addEventListener('click', () => {
-  content.innerHTML = `<p>¡Parpadea cada minuto para cuidar tus ojos! 🐱👁️</p>`;
+  panel.innerHTML = `
+  <div id='blinkDiv'>
+  <p>👁️ Timer de parpadeo activo 
+  <button id='dBlink'> Eliminar </button>
+  </p>
+  </div>`;
   requestNotificationPermission();
   startBlinkTimer();
 });
@@ -24,7 +30,6 @@ function requestNotificationPermission() {
     }
 }
 
-
 function startBlinkTimer() {
   setInterval(() => {
     if (Notification.permission === 'granted') {
@@ -35,3 +40,11 @@ function startBlinkTimer() {
     }
     }, 60000);
 }
+
+dBlink.addEventListener('click', () => {
+  const blinkDiv = document.getElementById('blinkDiv');
+  blinkDiv.remove();
+  
+
+
+});
