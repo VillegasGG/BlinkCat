@@ -30,15 +30,17 @@ function requestNotificationPermission() {
     }
 }
 
+let blinkTimerInterval;
+
 function startBlinkTimer() {
-  setInterval(() => {
+  blinkTimerInterval = setInterval(() => {
     if (Notification.permission === 'granted') {
       new Notification('¡Parpadea! 🐱👁️'), {
         body: '¡Cuida tus ojos! 👀',
         icon: 'assets/eye.png'
       };
     }
-    }, 60000);
+    }, 6000);
 }
 
 panel.addEventListener('click', (event) => {
@@ -47,5 +49,7 @@ panel.addEventListener('click', (event) => {
     if (blinkDiv) {
       blinkDiv.remove();
     }
+    clearInterval(blinkTimerInterval);
+    blinkTimerInterval = null;
   }
 });

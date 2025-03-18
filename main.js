@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 let mainWindow;
+let breakWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -30,12 +31,31 @@ app.whenReady().then(() => {
 });
 
 ipcMain.on('open-window', (event, timerType) => {
-  let newWindow = new BrowserWindow({
+  breakWindow = new BrowserWindow({
     width: 400,
-    height: 400
+    height: 400,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      enableRemoteModule: false,
+      nodeIntegration: false
+    }
   });
 
-  newWindow.loadFile(`${timerType}.html`);
+  breakWindow.loadFile(`${timerType}.html`);
+
+  breakWindow.webContents.openDevTools();
+
+  breakWindow.on('closed', () => {
+    breakWindow = null;
+  });
+});
+
+ipcMain.on('close-break-window', () => {
+  if (breakWindow) {
+    breakWindow.close();
+    breakWindow = null;
+  }
 });
 
 app.on('window-all-closed', () => {
