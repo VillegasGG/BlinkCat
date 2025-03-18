@@ -42,6 +42,19 @@
         console.error('Electron API no está disponible.');
       }
     });
+
+    if (window.electron && typeof window.electron.send === 'function') {
+      window.electron.on('set-times', (times) => {
+        const activeTimers = document.getElementById('ActiveTimers');
+        try {
+          activeTimers.innerHTML = `Tiempo de trabajo: ${times} minutos.`;
+        } catch (error) {
+          console.error('Error al mostrar los tiempos de trabajo.', error);
+        }
+      });
+    } else {
+      console.error('Electron API no está disponible.');
+    }
   </script>
 
 </body>

@@ -58,6 +58,21 @@ ipcMain.on('close-break-window', () => {
   }
 });
 
+ipcMain.on('send-times', (_, times) => {
+  if (!times || typeof times === 'undefined') {
+    console.error('Invalid times object received');
+    return;
+  }
+
+  console.log('Received times:', times);
+  console.log('Times type:', typeof times);
+  if (mainWindow) {
+    mainWindow.webContents.send('set-times', times);
+  } else {
+    console.log('Main window not available');
+  }
+});
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
