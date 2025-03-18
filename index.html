@@ -45,9 +45,12 @@
 
     if (window.electron && typeof window.electron.send === 'function') {
       window.electron.on('set-times', (times) => {
+        workTime = times.workTime;
+        breakTime = times.breakTime;
         const activeTimers = document.getElementById('ActiveTimers');
         try {
-          activeTimers.innerHTML = `Tiempo de trabajo: ${times} minutos.`;
+          activeTimers.innerHTML = `Tiempo de trabajo: ${workTime} minutos. 
+          Tiempo de pausa: ${breakTime} minutos.`;
         } catch (error) {
           console.error('Error al mostrar los tiempos de trabajo.', error);
         }

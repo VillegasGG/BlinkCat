@@ -13,7 +13,7 @@ breakForm.addEventListener('submit', (event) => {
     
     if(window.electron && typeof window.electron.send === 'function') {
         window.electron.send('close-break-window', 'close');
-        window.electron.send('send-times', workTime);
+        window.electron.send('send-times', {workTime, breakTime});
     } else {
         console.log('Electron not available');
     }
