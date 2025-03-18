@@ -3,7 +3,7 @@ const panel = document.getElementById('ActiveTimers');
 const dBlink = document.getElementById('dBlink');
 
 btnBlink.addEventListener('click', () => {
-  panel.innerHTML = `
+  panel.innerHTML += `
   <div id='blinkDiv'>
   <p>👁️ Timer de parpadeo activo 
   <button id='dBlink'> Eliminar </button>
