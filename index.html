@@ -57,8 +57,14 @@
         breakTime = times.breakTime;
         const activeTimers = document.getElementById('ActiveTimers');
         try {
-          activeTimers.innerHTML += `Tiempo de trabajo: ${workTime} minutos. 
-          Tiempo de pausa: ${breakTime} minutos.`;
+          activeTimers.innerHTML += `
+          <div id='breakTimer'>
+          <p>
+          Tiempo de trabajo: ${workTime} minutos. 
+          Tiempo de pausa: ${breakTime} minutos.
+          <button id='dBreak'> Eliminar </button>
+          </p>
+          </div>`;
         } catch (error) {
           console.error('Error al mostrar los tiempos de trabajo.', error);
         }
