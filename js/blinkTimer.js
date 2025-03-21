@@ -1,16 +1,19 @@
 const btnBlink = document.getElementById('btnBlink');
 const panel = document.getElementById('ActiveTimers');
 const dBlink = document.getElementById('dBlink');
-
 btnBlink.addEventListener('click', () => {
-  panel.innerHTML += `
-  <div id='blinkDiv'>
-  <p>👁️ Timer de parpadeo activo 
-  <button id='dBlink'> Eliminar </button>
-  </p>
-  </div>`;
-  requestNotificationPermission();
-  startBlinkTimer();
+  if (!blinkTimerInterval) {
+    panel.innerHTML += `
+    <div id='blinkDiv'>
+    <p>👁️ Timer de parpadeo activo 
+    <button id='dBlink'> Eliminar </button>
+    </p>
+    </div>`;
+    requestNotificationPermission();
+    startBlinkTimer();
+  } else {
+    alert('Ya hay un Timer de parpadeo activo.');
+  }
 });
 
 function requestNotificationPermission() {
