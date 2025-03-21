@@ -35,9 +35,17 @@
   <script>
     const btnBreak = document.getElementById('btnPomodoro');
 
+    let breakTimerActive = false;
+
     btnBreak.addEventListener('click', () => {
+      if (breakTimerActive) {
+        alert('Ya hay un temporizador de pausa activo.');
+        return;
+      }
+
       if (window.electron && typeof window.electron.send === 'function') {
         window.electron.send('open-window', 'break');
+        breakTimerActive = true;
       } else {
         console.error('Electron API no está disponible.');
       }
